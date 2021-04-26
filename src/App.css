@@ -1,38 +1,91 @@
-.App {
+.whiteSpace {
+  height: 3rem;
+  width: 100%;
+}
+
+.hero {
+  grid-template-columns: 1fr;
+  grid-template-rows: 30rem;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-content: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.hero .heroImgBox {
+  grid-area: 1/1/2/2;
+}
+
+.hero .heroOverlay {
+  grid-area: 1/1/2/2;
+
+}
+
+.hero .heroTextBox {
+  grid-area: 1/1/2/2;
+}
+
+.heroImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  display: grid;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.heroTextBox {
+  display: grid;
+  align-items: center;
+  justify-self: center;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.heroInfo {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: var(--font-size-lx);
+}
+
+.card {
+  margin: 1rem;
+  height: 42rem;
+  width: 20rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  border: 0;
+}
+
+.card img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.card-body {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+footer {
+  height: 10vh;
+  font-size: 1.1rem;
+  background-color: var(--color-main);
+  color: var(--color-white);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+footer p {
+  cursor: context-menu;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer p:hover .heart {
+  color: #C62828;
 }
