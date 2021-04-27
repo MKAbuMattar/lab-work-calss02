@@ -6,12 +6,13 @@ export default class Header extends Component {
       <header>
         <section className="grid hero">
           <div className="heroImgBox">
-            <img className="heroImg" src={this.props.image} alt="" title="" />
+            <img className="heroImg" src={this.props.image} alt={this.props.description} title={this.props.title} />
           </div>
           <div className="heroOverlay"></div>
           <div className="heroTextBox">
             <div className="grid-center heroInfo">
-              <h1 className="heroTitle">React State and Props</h1>
+              <h1 className="heroTitle">{this.props.title}</h1>
+              <p className="heroDescription">{this.props.description}</p>
             </div>
           </div>
         </section>
