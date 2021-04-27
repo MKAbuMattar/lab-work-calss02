@@ -42,9 +42,9 @@
 .heroTextBox {
   display: grid;
   align-items: center;
-  justify-self: center;
-  margin-left: 15px;
-  margin-right: 15px;
+  --margin-v: 1rem;
+  margin-left: var(--margin-v);
+  margin-right: var(--margin-v);
 }
 
 .heroInfo {
@@ -89,4 +89,8 @@ footer p {
 
 footer p:hover .heart {
   color: #C62828;
+}
+
+.modal-dialog {
+  margin: 0 auto;
 }

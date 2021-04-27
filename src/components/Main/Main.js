@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import Data from '../../data/data.json';
 
@@ -19,7 +17,9 @@ export default class Main extends Component {
   }
 
   display(content) {
-    this.setState({ data: content });
+    this.setState({
+      data: content
+    });
   }
 
   JSONFileSelect(event) {
@@ -34,10 +34,13 @@ export default class Main extends Component {
   }
 
   render() {
+    let x = (Math.floor((Math.random() * (this.state.data.length - 1)) + 1));
     return (
       <>
         <Header
-          image={this.state.data[Math.floor((Math.random() * (this.state.data.length - 1)) + 1)].image_url}
+          image={this.state.data[x].image_url}
+          title={this.state.data[x].title}
+          description={this.state.data[x].description}
         />
         <div className="whiteSpace"></div>
         <Container fluid>
