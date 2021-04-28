@@ -10,17 +10,17 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Footer from './components/Footer/Footer';
 import SelectedBeast from './components/SelectedBeast/SelectedBeast';
+import AppForm from './components/AppForm/AppForm';
 
 export default class App extends Component {
 
   constructor(props) {
-    let getNumberRandom = (Math.floor((Math.random() * (20 - 1)) + 1));
     super(props);
     this.state = {
       data: Data,
       show: false,
       hornedBeastInfo: {},
-      num: getNumberRandom
+      numHorn: 'displayAll'
     };
     this.JSONFileSelect = this.JSONFileSelect.bind(this);
   }
@@ -52,10 +52,25 @@ export default class App extends Component {
     let reader = new FileReader();
     reader.onload = (e) => {
       that.display(e.target.result);
-
     };
     reader.readAsText(file);
   }
+
+  filterData = () => {
+    if (this.state.numHorn !== 'displayAll') {
+      this.setState({
+        data: Data.filter((result) => result.horns === Number(this.state.numHorn))
+      });
+    } else {
+      this.setState({ data: Data });
+    }
+  }
+
+  updateData = (horn) => {
+    this.setState({
+      numHorn: horn.target.value
+    });
+  };
 
   render() {
     return (
@@ -65,10 +80,12 @@ export default class App extends Component {
           hornedBeastInfo={this.state.hornedBeastInfo}
           handleClose={this.handleClose}
         />
-        <Header
-          image={this.state.data[this.state.num].image_url}
-          title={this.state.data[this.state.num].title}
-          description={this.state.data[this.state.num].description}
+        <Header />
+        <div className="whiteSpace"></div>
+        <AppForm
+          filterData={this.filterData}
+          updateData={this.updateData}
+          numHorn={this.props.numHorn}
         />
         <div className="whiteSpace"></div>
         <Main data={this.state.data} getHornedBeastInfo={this.getHornedBeastInfo} />
