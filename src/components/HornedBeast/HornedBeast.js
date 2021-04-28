@@ -1,42 +1,24 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
-// import Button from 'react-bootstrap/Button';
-import HornedBeastInfo from '../HornedBeastInfo/HornedBeastInfo';
+import { Card } from 'react-bootstrap';
 
 export default class HornedBeast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfFavorites: 0,
-      toggle: false
+      numberOfFavorites: 0
     };
   }
 
   IncresasNumberOfFavorites = () => {
+    this.props.getHornedBeastInfo(this.props);
     this.setState({
-      numberOfFavorites: this.state.numberOfFavorites + 1,
-      toggle: this.state.toggle === false ? true : false
-    });
-  }
-
-  toggleFun = () => {
-    this.setState({
-      toggle: this.state.toggle === false ? true : false
+      numberOfFavorites: this.state.numberOfFavorites + 1
     });
   }
 
   render() {
     return (
       <>
-        <HornedBeastInfo
-          toggle={this.toggleFun}
-          display={this.state.toggle}
-          title={this.props.title}
-          image={this.props.image}
-          description={this.props.description}
-          horns={this.props.horns}
-          numOfFavorites={this.state.numberOfFavorites}
-        />
         <Card key={this.props.key} >
           <Card.Img
             onClick={this.IncresasNumberOfFavorites}
